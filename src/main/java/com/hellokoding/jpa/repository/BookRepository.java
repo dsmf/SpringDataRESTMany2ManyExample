@@ -1,7 +1,10 @@
 package com.hellokoding.jpa.repository;
 
-import com.hellokoding.jpa.model.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface BookRepository extends JpaRepository<Book, Integer>{
+import com.hellokoding.jpa.model.Book;
+
+@RepositoryRestResource(collectionResourceRel = "books", path = "books")
+public interface BookRepository extends CrudRepository<Book, Long>{
 }

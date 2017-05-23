@@ -5,47 +5,50 @@ import java.util.Set;
 
 @Entity
 public class Publisher {
-    private int id;
-    private String name;
-    private Set<Book> books;
 
-    public Publisher(){
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    }
+	private String name;
+	
+	@ManyToMany(mappedBy = "publishers", fetch = FetchType.LAZY)
+	private Set<Book> books;
 
-    public Publisher(String name){
-        this.name = name;
-    }
+	public Publisher() {
 
-    public Publisher(String name, Set<Book> books){
-        this.name = name;
-        this.books = books;
-    }
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getId() {
-        return id;
-    }
+	public Publisher(String name) {
+		this.name = name;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Publisher(String name, Set<Book> books) {
+		this.name = name;
+		this.books = books;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    @ManyToMany(mappedBy = "publishers")
-    public Set<Book> getBooks() {
-        return books;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setBooks(Set<Book> books) {
-        this.books = books;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Set<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
+	}
 }

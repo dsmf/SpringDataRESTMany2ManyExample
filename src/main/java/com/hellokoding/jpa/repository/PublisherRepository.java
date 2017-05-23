@@ -1,7 +1,10 @@
 package com.hellokoding.jpa.repository;
 
-import com.hellokoding.jpa.model.Publisher;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-public interface PublisherRepository extends JpaRepository<Publisher, Long>{
+import com.hellokoding.jpa.model.Publisher;
+
+@RepositoryRestResource(collectionResourceRel = "publishers", path = "publishers")
+public interface PublisherRepository extends CrudRepository<Publisher, Long>{
 }
